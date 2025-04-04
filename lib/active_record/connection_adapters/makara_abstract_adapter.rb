@@ -137,10 +137,10 @@ module ActiveRecord
         SQL_SKIP_STICKINESS_MATCHERS
       end
 
-      def initialize(*config)
+      def initialize(config)
         @error_handler = ::ActiveRecord::ConnectionAdapters::MakaraAbstractAdapter::ErrorHandler.new
         @control = ActiveRecordPoolControl.new(self)
-        super(*config)
+        super(config)
       end
 
       protected
@@ -212,9 +212,9 @@ module ActiveRecord
           @proxy = proxy
           @owner = nil
           @pool = nil
-          @schema_cache = ActiveRecord::ConnectionAdapters::SchemaCache.new @proxy
+          @schema_cache = ActiveRecord::ConnectionAdapters::SchemaCache.new(*@proxy)
           @idle_since = Concurrent.monotonic_time
-          @adapter = ActiveRecord::ConnectionAdapters::AbstractAdapter.new(@proxy)
+          @adapter = ActiveRecord::ConnectionAdapters::AbstractAdapter.new(*@proxy)
         end
 
         def close(*_args)

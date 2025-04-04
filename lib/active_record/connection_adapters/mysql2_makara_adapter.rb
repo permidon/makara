@@ -3,8 +3,8 @@ require 'active_record/connection_adapters/mysql2_adapter'
 
 module ActiveRecord
   module ConnectionHandling
-    def mysql2_makara_connection(*config)
-      ActiveRecord::ConnectionAdapters::MakaraMysql2Adapter.new(*config)
+    def mysql2_makara_connection(config)
+      ActiveRecord::ConnectionAdapters::MakaraMysql2Adapter.new(config)
     end
   end
 end
