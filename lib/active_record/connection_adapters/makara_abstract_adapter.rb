@@ -137,10 +137,10 @@ module ActiveRecord
         SQL_SKIP_STICKINESS_MATCHERS
       end
 
-      def initialize(config)
+      def initialize(*config)
         @error_handler = ::ActiveRecord::ConnectionAdapters::MakaraAbstractAdapter::ErrorHandler.new
         @control = ActiveRecordPoolControl.new(self)
-        super(config)
+        super(*config)
       end
 
       protected
