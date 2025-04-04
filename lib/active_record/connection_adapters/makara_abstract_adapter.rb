@@ -212,9 +212,9 @@ module ActiveRecord
           @proxy = proxy
           @owner = nil
           @pool = nil
-          @schema_cache = ActiveRecord::ConnectionAdapters::SchemaCache.new(*@proxy)
+          @schema_cache = ActiveRecord::ConnectionAdapters::SchemaCache.new
           @idle_since = Concurrent.monotonic_time
-          @adapter = ActiveRecord::ConnectionAdapters::AbstractAdapter.new(*@proxy)
+          @adapter = ActiveRecord::ConnectionAdapters::AbstractAdapter.new(@proxy)
         end
 
         def close(*_args)
